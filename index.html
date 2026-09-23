@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#6366f1" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Saved posts" />
+    <meta name="description" content="Save and categorize links from Threads or anywhere — runs on your phone, data stays local." />
+    <title>Saved posts organizer</title>
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./icons/icon-192.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./icons/icon-180.png" />
+  </head>
+  <body>
+    <header>
+      <h1>Saved posts organizer</h1>
+      <p>Paste a link, pick a category, find it later. Data stays on this phone.</p>
+    </header>
+
+    <main>
+      <aside id="install-banner" class="card install-banner" hidden>
+        <p id="install-copy"></p>
+        <div class="install-actions">
+          <button type="button" class="btn btn-primary" id="install-btn" hidden>Add to Home Screen</button>
+          <button type="button" class="btn btn-ghost" id="dismiss-install">Not now</button>
+        </div>
+      </aside>
+
+      <section aria-labelledby="add-heading">
+        <h2 id="add-heading">Add</h2>
+        <form id="capture-form" class="card" autocomplete="off">
+          <div class="field">
+            <label for="url">Link</label>
+            <div class="url-row">
+              <input
+                id="url"
+                name="url"
+                type="text"
+                inputmode="url"
+                enterkeyhint="done"
+                autocomplete="url"
+                autocapitalize="off"
+                spellcheck="false"
+                placeholder="https://www.threads.net/..."
+                required
+              />
+              <button type="button" class="btn btn-secondary" id="paste-link">Paste</button>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category" name="category"></select>
+            </div>
+            <div class="field">
+              <label for="new-category">New category (optional)</label>
+              <input id="new-category" name="newCategory" type="text" placeholder="e.g. Travel" maxlength="40" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="note">Note (optional)</label>
+            <textarea id="note" name="note" maxlength="2000" placeholder="Why you saved it"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Save link</button>
+        </form>
+      </section>
+
+      <section aria-labelledby="library-heading">
+        <h2 id="library-heading">Library</h2>
+        <div class="toolbar card" style="margin-bottom: 0.75rem">
+          <label class="sr-only" for="search">Search</label>
+          <input id="search" type="search" placeholder="Search URL, note, category..." />
+          <label class="sr-only" for="filter-category">Filter by category</label>
+          <select id="filter-category"></select>
+        </div>
+        <p id="empty-state" class="empty" hidden>
+          No saved links yet. Copy a Threads link, tap Paste, then Save — or share into this app on Android once it is on your Home Screen.
+        </p>
+        <ul id="post-list" class="post-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
