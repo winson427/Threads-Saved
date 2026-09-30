@@ -86,5 +86,28 @@
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <script src="./app.js" defer></script>
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyA25btYYP3mejZBgDsYOKSUM-c2ZpFxH9w",
+    authDomain: "threads-s.firebaseapp.com",
+    projectId: "threads-s",
+    storageBucket: "threads-s.firebasestorage.app",
+    messagingSenderId: "332050594992",
+    appId: "1:332050594992:web:314d173520a4dca8afcf75",
+    measurementId: "G-S6BLMP2SJV"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
   </body>
 </html>
